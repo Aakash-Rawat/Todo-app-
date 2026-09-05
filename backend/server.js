@@ -9,15 +9,24 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+const PORT = 3000;
 
 app.use('/api/v1/user',authRoute);
 app.use('/api/v1',todoRoute);
 
 
-app.listen(3000,()=>{
-      connectdb();
-      console.log("server started successfully");
-})
+const startServer = async () => {
+    try {
+        await connectdb();
+
+        app.listen(PORT, () => {
+            console.log(`Server running on ${PORT}`);
+        });
+    } catch (error) {
+        console.log("Database connection failed:", error);
+    }
+};
+
+startServer();
 
 
