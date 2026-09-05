@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API = "http://localhost:3000/api/v1";
+const API = "https://todo-app-0z2k.onrender.com/api/v1";
 
 function App() {
   const [page, setPage] = useState("login");
